@@ -55,7 +55,7 @@
                             <th width="10%">RFC</th>
                             <th width="10%">Notas</th>
                             <th width="10%">Dirección</th>
-                            <th width="10%">Opciones</th>
+                            <th width="10%" class="not-export-column">Opciones</th>
                         </tr>
                     </thead>
                 </table>
@@ -116,7 +116,7 @@
                         <label><strong>RFC:</strong></label>
                     </div>
                     <div class="col-lg-9 col-md-9 col-12">
-                        <input type="text" id="rfc" class="form-control" placeholder="Ingrese el RFC" onkeyup="check_rfc(this.value)"; required>
+                        <input type="text" id="rfc" class="form-control rfc" placeholder="Ingrese el RFC" onkeyup="check_rfc(this.value)"; required>
                         <span class="span-rfc span-error"></span>
                     </div>
                 </div>
@@ -141,7 +141,7 @@
     <link rel="stylesheet" href="/view/assets/css/style.css">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.4.1/js/dataTables.buttons.min.js"></script>
-    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.4.1/js/buttons.html5.min.js"></scrip>
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.4.1/js/buttons.html5.min.js"></script>
     <script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
     <script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.all.min.js" integrity="sha512-IZ95TbsPTDl3eT5GwqTJH/14xZ2feLEGJRbII6bRKtE/HC6x3N4cHye7yyikadgAsuiddCY2+6gMntpVHL1gHw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -159,10 +159,18 @@
                     "url": "?c=users&a=Get_data"
                 },
                 dom: 'Bfrtip',
-                buttons: [
-                    'csvHtml5',
-                    'pdfHtml5'
-                ],
+                buttons: [{
+                    extend: 'csvHtml5',
+                    exportOptions: {
+                        columns: ':not(:last-child)',
+                    }
+                },
+                {       
+                    extend: 'pdfHtml5',
+                    exportOptions: {
+                        columns: ':not(:last-child)',
+                    }
+                }],
                 paging: true,
                 pageLength: 50,
                 searching: true,

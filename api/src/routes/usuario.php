@@ -8,7 +8,7 @@ $app = new \Slim\App();
 
 //GET obtenemos los registros
 $app->get('/v1/user', function(Request $request, Response $response){
-    $sql = "SELECT * FROM tblusers";
+    $sql = "SELECT id, nameus as name, phone,email,rfc,notes,ipaddress,date_created FROM tblusers";
     $data_user = "";
     
     try{

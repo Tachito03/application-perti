@@ -97,6 +97,10 @@ label{
     margin-top: 80px;
 }
 
+.rfc{
+    text-transform: uppercase;
+}
+
 @media (min-width: 320px) {
     .btn-options-selected{
         font-family: 'Poppins', sans-serif;

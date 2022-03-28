@@ -93,7 +93,7 @@
 
                             <div class="row">
                                 <div class="col-12 mtop20">
-                                    <input type="text" name="rfc" id="rfc" placeholder="RFC" class="form-control" onkeyup="check_rfc(this.value);" required>
+                                    <input type="text" name="rfc" id="rfc" placeholder="RFC" class="form-control rfc" onkeyup="check_rfc(this.value);" required>
                                     <span class="span-rfc span-error"></span>
                                 </div>
                             </div>
