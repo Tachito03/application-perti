@@ -30,6 +30,33 @@ $app->get('/v1/user', function(Request $request, Response $response){
 
 });
 
+//GET obtenemos un usuario
+$app->get('/v1/user/{id}', function(Request $request, Response $response){
+    $uuid = $request->getAttribute('id');
+    $sql  = "SELECT id, nameus as name, phone,email,rfc,notes,ipaddress,date_created FROM tblusers
+             WHERE id=$uuid";
+             
+    $data_user = "";
+    
+    try{
+        $pdo = new Database();
+        $pdo = $pdo->Conectar();
+        $resultado = $pdo->prepare($sql);
+        $resultado->execute();
+            if($resultado->rowCount() > 0){
+                $data_user = $resultado->fetchAll(PDO::FETCH_OBJ);
+            }else{
+                $data_user = "El usuario con este ID no está registrado";
+            }
+        }
+        catch(Exception $ex){
+            $data_user = $ex->getMessage();
+        }
+
+    echo json_encode($data_user,JSON_UNESCAPED_UNICODE);
+
+});
+
 //PUT crear un nuevo usuario
 $app->put('/v1/user/add', function(Request $request, Response $response){
     
