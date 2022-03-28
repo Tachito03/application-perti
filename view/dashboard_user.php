@@ -116,7 +116,7 @@
                         <label><strong>RFC:</strong></label>
                     </div>
                     <div class="col-lg-9 col-md-9 col-12">
-                        <input type="text" id="rfc" class="form-control rfc" placeholder="Ingrese el RFC" onkeyup="check_rfc(this.value)"; required>
+                        <input type="text" id="rfc" class=" rfc form-control" placeholder="Ingrese el RFC" onkeyup="check_rfc(this.value)"; required>
                         <span class="span-rfc span-error"></span>
                     </div>
                 </div>

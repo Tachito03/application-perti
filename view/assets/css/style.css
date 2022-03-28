@@ -5,6 +5,10 @@
     margin-left: 0px!important;
 }
 
+.rfc{
+    text-transform: uppercase;
+}
+
 .mtop20{
     margin-top: 20px;
 }
@@ -97,9 +101,6 @@ label{
     margin-top: 80px;
 }
 
-.rfc{
-    text-transform: uppercase;
-}
 
 @media (min-width: 320px) {
     .btn-options-selected{
