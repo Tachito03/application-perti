@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 28-03-2022 a las 01:21:45
--- Versión del servidor: 10.4.17-MariaDB
--- Versión de PHP: 7.3.27
+-- Servidor: 127.0.0.1:3306
+-- Tiempo de generación: 28-03-2022 a las 07:10:51
+-- Versión del servidor: 10.5.12-MariaDB-cll-lve
+-- Versión de PHP: 7.2.34
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `perti-test`
+-- Base de datos: `u509065391_ecommerce`
 --
 
 -- --------------------------------------------------------
@@ -44,8 +44,8 @@ CREATE TABLE `tblusers` (
 --
 
 INSERT INTO `tblusers` (`id`, `nameus`, `phone`, `email`, `passwordus`, `rfc`, `notes`, `ipaddress`, `date_created`) VALUES
-(1, 'Eustacio', '7711244052', 'eustacio@gmail.com', '$2y$10$zGwkg9KQMI52K/1/bgnFJ.BKFwU804kVGU0v7O1gYDG/J766yZqE6', 'CAPV841211G54', 'demo, demo', '127.0.0.1', '2022-03-27 15:56:27'),
-(2, 'Arellanos', '4762633850', 'arellanos.ba@gmail.com', '$2y$10$kCuyuvNNr3d8obcoa8xxNu0ng5blnr8sZttYjh6J3Sys9VKm0CLei', 'QUMA470929F37', 'test 1, te', '127.0.0.1', '2022-03-27 17:08:15');
+(1, 'Eustacio Bautista', '8119647445', 'arellanos.baaeus@gmail.com', '$2y$10$MrNlmhf6PKWP.jdwJsXzI.r.3h91ZPwuzVqkLV/1TSHPAM65rwequ', 'LAC0207121HL', 'Test test ', '2806:2f0:90a0:e015:f', '2022-03-28 06:06:47'),
+(2, 'Hugo bautista', '7711244052', 'hugo.123@gmail.com', '$2y$10$HuwmsxtbCbebQMdnxt.t5eKBRlQpFGpwtDUyZcoy8Fktkbc1cME6S', 'UNA2907227Y5', 'Nuevo ', '2806:2f0:90a0:e015:f', '2022-03-28 06:09:41');
 
 --
 -- Índices para tablas volcadas
