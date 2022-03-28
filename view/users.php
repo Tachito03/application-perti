@@ -20,7 +20,7 @@
                     <div class="container-form">
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-6 text-center"><p class="btn-options-selected sign-in">Iniciar sesion</p></div>
-                            <div class="col-lg-6 col-md-6 col-6 text-center"><p class="btn-options sign-up">Regístarme</p></div>
+                            <div class="col-lg-6 col-md-6 col-6 text-center"><p class="btn-options sign-up">Regístrarme</p></div>
                         </div>
                         <form action="" id="loginuser" method="post">
                             <div class="row">
@@ -53,6 +53,9 @@
                                 <div class="col-12 text-center">
                                     <span class="register-msj log-error"></span>
                                 </div>
+                            </div>
+                            <div class="row">
+                                <div class="footer"></div>
                             </div>
                         </form>
 
@@ -105,7 +108,7 @@
                             <div class="row mtop20">
                                 <div class="col-lg-3 col-md-2 col-12"></div>
                                 <div class="col-lg-6 col-md-8 col-12">
-                                    <input type="submit" value="Registarme" class="submit-form">
+                                    <input type="submit" value="Registrarme" class="submit-form">
                                 </div>
                                 <div class="col-lg-3 col-md-2 col-12"></div>
                             </div>
