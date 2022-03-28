@@ -36,8 +36,8 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-6"><p class="user-log"><strong>Email:</strong> <?php echo $_SESSION['email_us'] ?></p></div>
-                        <div class="col-lg-6 text-right"><p class="user-log"><a href="?c=users&a=cerrar_session" style="color: #fff; text-decoration: none;">Salir</a></p></div>
+                        <div class="col-lg-8 col-md-8 col-12"><p class="user-log"><strong>Email:</strong> <?php echo $_SESSION['email_us'] ?></p></div>
+                        <div class="col-lg-4 col-md-4 col-12 text-right"><p class="user-log"><a href="?c=users&a=cerrar_session" style="color: #fff; text-decoration: none;">Salir</a></p></div>
                     </div>
                 </div>
             </div>
