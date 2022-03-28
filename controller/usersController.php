@@ -15,9 +15,12 @@
 
         public function Insertar(){
             $users = new usersModels();
-            $status = "";
-            $mensaje  = "";
-            $uuid = "";
+            $data  = "";
+
+            $mensaje = "";
+            $status  = "";
+            $uuid    = "";
+
             $encryp_password  = password_hash($_POST['password'], PASSWORD_DEFAULT);
             $users->nombre    = $_POST['nombre'];
             $users->telefono  = $_POST['telefono'];
@@ -25,44 +28,74 @@
             $users->password  = $encryp_password;
             $users->rfc       = $_POST['rfc'];  
             $users->notes     = $_POST['notas']; 
-            $users->ipaddress =  $_SERVER["REMOTE_ADDR"];  
-            
-            if($this->valida_rfc($_POST['rfc'])){
-                $uuid = $this->model->Registrar($users);
-                $status = "OK";
-                $mensaje = "Usuario registrado con éxito";
-            }else{
-                $status  = "NUll";
-                $mensaje = "El RFC que ingreso en inválido"; 
-            }
-           
-            $data = array('id' => $uuid, 'status' => $status, 'msj' => $mensaje );
+            $users->ipaddress =  $_SERVER["REMOTE_ADDR"];
 
+            try{
+                if(preg_match("/^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/", $_POST['password'])){
+                    if(preg_match("/^([\da-z_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/", $_POST['email'])){
+                        if(preg_match("/^([A-ZÑ&]{3,4}) ?(?:- ?)?(\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\d|3[01])) ?(?:- ?)?([A-Z\d]{2})([A\d])$/",$_POST['rfc'])){
+                            if(is_numeric($_POST['telefono']) && strlen($_POST['telefono']) == '10' || strlen($_POST['telefono']) == '12'){
+                                $uuid = $this->model->Registrar($users);
+                                $status = "OK";
+                                $mensaje = "Usuario registrado con éxito";
+                            }else{
+                                $status = "Error";
+                                $mensaje = "El número de teléfono es incorrecto";
+                            } 
+                        }else{
+                            $status = "Error";
+                            $mensaje = "El RFC que ingresó es inválido";
+                        }
+                    }else{
+                        $status = "Error";
+                        $mensaje = "El email es inválido";
+                    }
+                }else{
+                    $status = "Error";
+                    $mensaje = "La contraseña debe contener al menos 8 carácteres";
+                }
+            } catch(Exception $ex){
+                die($ex->getMessage());
+            }
+            $data = array('uuid' => $uuid, 'status' => $status, 'mensaje'=> $mensaje);
             echo json_encode($data, true);
         }
 
         public function Update(){
             $users = new usersModels();
-            $error_rfc = "";
-            $code_rfc  = "";
-            $status = "";
+    
+            $status  = "";
+            $mensaje = "";
             $encryp_password  = password_hash($_POST['password'], PASSWORD_DEFAULT);
             $users->id         = $_POST['id'];
             $users->nombre    = $_POST['nombre'];
             $users->telefono  = $_POST['telefono'];
             $users->password  = $encryp_password;
             $users->rfc       = $_POST['rfc'];  
- 
             
-            if($this->valida_rfc($_POST['rfc'])){
-                $status = $this->model->Actualizar($users);
-            }else{
-                $error_rfc = "El RFC es inválido";
-                $code_rfc  = "1";
+            try{
+                if(preg_match("/^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/", $_POST['password'])){
+                    if(preg_match("/^([A-ZÑ&]{3,4}) ?(?:- ?)?(\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\d|3[01])) ?(?:- ?)?([A-Z\d]{2})([A\d])$/",$_POST['rfc'])){
+                        if(is_numeric($_POST['telefono']) && strlen($_POST['telefono']) == '10' || strlen($_POST['telefono']) == '12'){
+                                $status  = $this->model->Actualizar($users);
+                                $mensaje = "Usuario actualizado con éxito";
+                        }else{
+                                $status = "Error";
+                                $mensaje = "El número de teléfono es incorrecto";
+                        } 
+                    }else{
+                        $status = "Error";
+                        $mensaje = "El RFC que ingresó es inválido";
+                    }
+                }else{
+                    $status = "Error";
+                    $mensaje = "La contraseña debe contener al menos 8 carácteres";
+                }
+            } catch(Exception $ex){
+                die($ex->getMessage());
             }
            
-            $data = array('msg_rfc' => $error_rfc, 'code_rfc' => $code_rfc, 'status' => $status);
-
+            $data = array('status' => $status, 'mensaje'=> $mensaje);
             echo json_encode($data, true);
         }
 
@@ -126,53 +159,5 @@
             header("Location: ./");
         }
 
-
-
-         function valida_rfc($valor){
-            $valor = str_replace("-", "", $valor); 
-            $parte4 = substr($valor, 3, 1);
-            
-        //RFC sin homoclave
-            if(strlen($valor)==10){
-                $obtiene_letras = substr($valor, 0, 4); 
-                $obtiene_numeros = substr($valor, 4, 6);
-                if (ctype_alpha($obtiene_letras) && ctype_digit($obtiene_numeros)) { 
-                    return true;
-                }
-                return false;            
-            }
-        // Sólo la homoclave
-            else if (strlen($valor) == 3) {
-                $homoclave = $valor;
-                if(ctype_alnum($homoclave)){
-                    return true;
-                }
-                return false;
-            }
-        //RFC Persona Moral.
-            else if (ctype_digit($parte4) && strlen($valor) == 12) { 
-                $obtiene_letras = substr($valor, 0, 3); 
-                $obtiene_numeros = substr($valor, 3, 6); 
-                $homoclave = substr($valor, 9, 3); 
-                if (ctype_alpha($obtiene_letras) && ctype_digit($obtiene_numeros) && ctype_alnum($homoclave)) { 
-                    return true; 
-                } 
-                return false;
-            //RFC Persona Física. 
-            } else if (ctype_alpha($parte4) && strlen($valor) == 13) { 
-            $obtiene_letras = substr($valor, 0, 4); 
-            $obtiene_numeros = substr($valor, 4, 6);
-            $homoclave = substr($valor, 10, 3); 
-            if (ctype_alpha($obtiene_letras) && ctype_digit($obtiene_numeros) && ctype_alnum($homoclave)) { 
-                return true; 
-            }
-                return false; 
-            }else { 
-                return false; 
-            }  
-        }
-    }
-
-
-    
+    }    
 ?>

@@ -1,7 +1,4 @@
 $(document).ready(function(){
-
-    //$("#registrouser").validate();
-
     $("#registrouser").on('submit', function(e) {
          e.preventDefault();
 
@@ -21,19 +18,20 @@ $(document).ready(function(){
                     dataType: "json",
                     data: param,
                     success: function (data) {
+                        console.log(data);
                         if(data.status == "OK"){
                             $('#registrouser')[0].reset();
-                            $('.success-re').html(data.msj +' '+ '<strong><span><- Inicia sesión</span></strong>');
+                            $('.success-re').html(data.mensaje +' '+ '<strong><span><- Inicia sesión</span></strong>');
                             setTimeout(function() { 
                                 $('.success-re').html('');
-                            }, 5000);
+                            }, 8000);
                             $('.error-re').html();
                         }else{
                             
-                            $('.error-re').html(data.msj);
+                            $('.error-re').html(data.mensaje);
                             setTimeout(function() { 
                                 $('.error-re').html('');
-                            }, 5000);
+                            }, 8000);
                             $('.success-re').html();
                         }
                     },
@@ -71,6 +69,11 @@ $(document).ready(function(){
                             'El registro se actualizó correctamente',
                             'success'
                             )
+                       }else{
+                           $('.update-user').html(data.mensaje);
+                           setTimeout(function() { 
+                            $('.update-user').html('');
+                        }, 8000);
                        }
                    },
                    error: function (e) {
@@ -79,6 +82,10 @@ $(document).ready(function(){
             }
         }
    });
+
+    $('.modal').on('hidden.bs.modal', function(){
+        $('#update-user')[0].reset();
+    });
 
     $("#loginuser").on('submit', function(e) {
         e.preventDefault();

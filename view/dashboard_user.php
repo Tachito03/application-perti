@@ -81,7 +81,7 @@
                         <label><strong>Nombre:</strong></label>
                     </div>
                     <div class="col-lg-9 col-md-9 col-12">
-                        <input type="text" id="nombre" class="form-control" placeholder="Nombre">
+                        <input type="text" id="nombre" class="form-control" placeholder="Nombre" required>
                         <input type="hidden" id="id" class="form-control">
                     </div>
                 </div>
@@ -90,7 +90,7 @@
                         <label><strong>Teléfono:</strong></label>
                     </div>
                     <div class="col-lg-9 col-md-9 col-12">
-                        <input type="tel" id="telefono" class="form-control" placeholder="Teléfono" maxlength="12">
+                        <input type="tel" id="telefono" class="form-control" placeholder="Teléfono" maxlength="12" required>
                     </div>
                 </div>
                 <div class="row mtop20">
@@ -98,7 +98,7 @@
                         <label><strong>Nueva contraseña:</strong></label>
                     </div>
                     <div class="col-lg-9 col-md-9 col-12">
-                        <input type="password" id="password" class="form-control" placeholder="Nueva contraseña" onkeyup="checkPassword(this.value)">
+                        <input type="password" id="password" class="form-control" placeholder="Nueva contraseña" onkeyup="checkPassword(this.value)" required>
                         <span class="span-password span-error"></span>
                     </div>
                 </div>
@@ -116,16 +116,20 @@
                         <label><strong>RFC:</strong></label>
                     </div>
                     <div class="col-lg-9 col-md-9 col-12">
-                        <input type="text" id="rfc" class="form-control" placeholder="Ingrese el RFC" onkeyup="check_rfc(this.value)";>
+                        <input type="text" id="rfc" class="form-control" placeholder="Ingrese el RFC" onkeyup="check_rfc(this.value)"; required>
                         <span class="span-rfc span-error"></span>
                     </div>
                 </div>
                 <div class="row mtop20">
-                    <div class="col-lg-7 col-md-7 col-12">
-                        
+                    <div class="col-lg-7 col-md-7 col-12">  
                     </div>
                     <div class="col-lg-5 col-md-5 col-12">
                         <input type="submit" class="submit-form" value="Actualizar">
+                    </div>
+                </div>
+                <div class="row mtop20">
+                    <div class="col-12 text-center">
+                        <span class="update-user error-re"></span>
                     </div>
                 </div>
                 

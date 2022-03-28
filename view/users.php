@@ -32,13 +32,13 @@
                             </div>
                             <div class="row">
                                 <div class="col-12">
-                                    <input type="email" name="usemail" id="usemail"  placeholder="Correo electrónico" class="form-control" required onkeyup="valida_email(this.value)">
+                                    <input type="email" name="usemail" id="usemail"  placeholder="Correo electrónico" class="form-control" required onkeyup="valida_email(this.value)" required>
                                     <span class="span-email span-error"></span>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-12 mtop20">
-                                    <input type="password" name="uspassword" id="uspassword"  placeholder="Contraseña" class="form-control" required onkeyup="checkPassword(this.value)">
+                                    <input type="password" name="uspassword" id="uspassword"  placeholder="Contraseña" class="form-control" required onkeyup="checkPassword(this.value)" required>
                                     <span class="span-password span-error"></span>
                                 </div>
                             </div>
@@ -66,40 +66,40 @@
                             </div>
                             <div class="row mtop20">
                                 <div class="col-12">
-                                    <input type="text" name="nombre" id="nombre"  placeholder="Nombre" class="form-control">
+                                    <input type="text" name="nombre" id="nombre"  placeholder="Nombre" class="form-control" required>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-12 mtop20">
-                                    <input type="tel" name="telefono" id="telefono" placeholder="Teléfono" class="form-control" maxlength="12">
+                                    <input type="tel" name="telefono" id="telefono" placeholder="Teléfono" class="form-control" maxlength="12" required>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-12 mtop20">
-                                    <input type="email" name="email" id="email" placeholder="Correo electrónico" class="form-control" onkeyup="valida_email(this.value)">
+                                    <input type="email" name="email" id="email" placeholder="Correo electrónico" class="form-control" onkeyup="valida_email(this.value)" required>
                                     <span class="span-email span-error"></span>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 col-12 mtop20">
-                                    <input type="password" name="password" id="password" placeholder="Contraseña" class="form-control" onkeyup="checkPassword(this.value)">
+                                    <input type="password" name="password" id="password" placeholder="Contraseña" class="form-control" onkeyup="checkPassword(this.value)" required>
                                     <span class="span-password span-error"></span>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-12 mtop20">
-                                    <input type="password" name="confirmpass" id="confirmpass" placeholder="Confirmar contraseña" class="form-control" onkeyup="check_password()">
+                                    <input type="password" name="confirmpass" id="confirmpass" placeholder="Confirmar contraseña" class="form-control" onkeyup="check_password()" required>
                                     <span class="span-pw span-error"></span>
                                 </div>
                             </div>
 
                             <div class="row">
                                 <div class="col-12 mtop20">
-                                    <input type="text" name="rfc" id="rfc" placeholder="RFC" class="form-control" onkeyup="check_rfc(this.value);">
+                                    <input type="text" name="rfc" id="rfc" placeholder="RFC" class="form-control" onkeyup="check_rfc(this.value);" required>
                                     <span class="span-rfc span-error"></span>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-12 mtop20">
-                                    <input type="text" name="notas" id="notas" placeholder="Notas" class="form-control">
+                                    <input type="text" name="notas" id="notas" placeholder="Notas" class="form-control" required>
                                 </div>
                             </div>
                             <div class="row mtop20">
